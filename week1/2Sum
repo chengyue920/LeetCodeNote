@@ -15,6 +15,30 @@ public:
         return res;
     }
 };
+
+2. 两数相加
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        struct ListNode *p=l1,*q=l2;
+        struct ListNode *head=new ListNode(0);
+        struct ListNode *res=head;
+        int carry=0;
+        int sum;
+        while(q!=NULL||p!=NULL||carry!=0){
+            int tempa=p!=NULL?p->val:0;
+            int tempb=q!=NULL?q->val:0;
+            sum=tempa+tempb+carry;
+            carry=sum/10;
+            res->next=new ListNode(sum%10);
+            res=res->next;
+            if(p!=NULL)p=p->next;
+            if(q!=NULL)q=q->next;
+        }
+        return head->next;
+    }
+};
+
 167. 两数之和 II - 输入有序数组
 class Solution {
 public:
